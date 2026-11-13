@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disha | Professional Portfolio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff0f5;
+    color: #333;
+    line-height: 1.7;
+}
+
+/* HEADER */
+header {
+    background: #8f4565;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav button {
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 8px 12px;
+}
+
+nav button:hover {
+    color: #ffd6e5;
+}
+
+/* PAGE DISPLAY */
+.page {
+    display: none;
+    min-height: 85vh;
+    padding: 65px 9%;
+    animation: fade 0.4s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* HOME PAGE */
+#home {
+    background: linear-gradient(120deg, #ffe4ec, #fff5f8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 65px;
+    flex-wrap: wrap;
+}
+
+#home.active {
+    display: flex;
+}
+
+.home-content {
+    max-width: 580px;
+}
+
+.home-content h1 {
+    font-size: 48px;
+    color: #743650;
+    margin: 12px 0;
+}
+
+.home-content h1 span {
+    color: #d46b96;
+}
+
+.home-content h3 {
+    color: #8f4565;
+    font-size: 21px;
+    font-weight: normal;
+}
+
+.home-content p {
+    margin: 20px 0;
+}
+
+.profile-photo {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #d46b96;
+    box-shadow: 0 5px 20px #d9a1b5;
+}
+
+.photo-area {
+    text-align: center;
+}
+
+#photoUpload {
+    display: none;
+}
+
+.upload-label {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 9px 18px;
+    background: #a94f75;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* HOME OPTIONS */
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-top: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: #a94f75;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 7px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn:hover {
+    background: #743650;
+}
+
+.social {
+    margin-top: 18px;
+}
+
+/* GENERAL BOXES */
+.box {
+    background: white;
+    max-width: 1050px;
+    margin: 25px auto;
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(143,69,101,0.12);
+}
+
+.section-title {
+    text-align: center;
+    color: #8f4565;
+    font-size: 34px;
+    margin-bottom: 30px;
+}
+
+/* RESUME */
+.resume-header {
+    text-align: center;
+    border-bottom: 2px solid #d46b96;
+    padding-bottom: 20px;
+}
+
+.resume-header h2 {
+    font-size: 32px;
+    color: #743650;
+}
+
+.resume-section {
+    margin-top: 28px;
+}
+
+.resume-section h3,
+.bio-box h3 {
+    color: #a94f75;
+    border-bottom: 1px solid #e8c5d3;
+    padding-bottom: 7px;
+    margin-bottom: 12px;
+}
+
+.resume-section p,
+.resume-section li {
+    margin-bottom: 7px;
+}
+
+.resume-section ul {
+    padding-left: 25px;
+}
+
+/* BIO DATA */
+.bio-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.bio-table td {
+    padding: 13px;
+    border-bottom: 1px solid #f0d8e2;
+}
+
+.bio-table td:first-child {
+    font-weight: bold;
+    color: #8f4565;
+    width: 35%;
+}
+
+/* PROJECTS */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.project-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(143,69,101,0.12);
+}
+
+.project-card h3 {
+    color: #a94f75;
+    margin-bottom: 12px;
+}
+
+/* CONTACT */
+.contact-box {
+    text-align: center;
+    background: white;
+    max-width: 800px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 12px;
+}
+
+.contact-box a {
+    color: #a94f75;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* BACK BUTTON */
+.back-button {
+    display: block;
+    margin: 30px auto 0;
+}
+
+/* FOOTER */
+footer {
+    background: #8f4565;
+    color: white;
+    text-align: center;
+    padding: 18px;
+}
+
+/* MOBILE */
+@media(max-width: 750px) {
+    header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    #home {
+        text-align: center;
+        padding-top: 45px;
+    }
+
+    .home-content h1 {
+        font-size: 36px;
+    }
+
+    .options {
+        justify-content: center;
+    }
+
+    .profile-photo {
+        width: 220px;
+        height: 220px;
+    }
+
+    .box {
+        padding: 22px;
+    }
+
+    .page {
+        padding: 45px 5%;
+    }
+
+    .bio-table {
+        font-size: 14px;
+    }
+}
+
+/* PRINT RESUME */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #resume, #resume * {
+        visibility: visible;
+    }
+
+    #resume {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 0;
+    }
+
+    #resume .back-button,
+    #resume .section-title {
+        display: none;
+    }
+
+    .box {
+        box-shadow: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Disha.</div>
+
+    <nav>
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('about')">About</button>
+        <button onclick="showPage('resume')">Resume</button>
+        <button onclick="showPage('biodata')">Bio Data</button>
+        <button onclick="showPage('projects')">Projects</button>
+        <button onclick="showPage('contact')">Contact</button>
+    </nav>
+</header>
+
+<!-- HOME PAGE -->
+<section class="page active" id="home">
+
+    <div class="home-content">
+
+        <h3>Hello, Welcome to My Portfolio!</h3>
+
+        <h1>I'm <span>Disha</span></h1>
+
+        <h3>Computer Science Engineering Student</h3>
+
+        <p>
+            I am a passionate CSE student interested in programming,
+            software development and learning new technologies.
+            Welcome to my personal portfolio.
+        </p>
+
+        <div class="options">
+            
+            <button class="btn" onclick="showPage('resume')">My Resume</button>
+            <button class="btn" onclick="showPage('biodata')">Bio Data</button>
+            
+        </div>
+
+        <div class="options social">
+            <a class="btn" href="https://www.linkedin.com/in/disha-kulal-478624428/" target="_blank">LinkedIn</a>
+
+            <a class="btn" href="https://github.com/dishakulal2026-cells" target="_blank">GitHub</a>
+        <button class="btn" onclick="showPage('contact')">Contact Me</button>
+
+        </div>
+
+        
+    </div>
+
+    <div class="photo-area">
+
+        <img
+            id="profileImage"
+            class="profile-photo"
+            src="disha1.png"
+            alt="Disha's Profile Photo">
+
+        <br>
+
+        
+
+        <input
+            type="file"
+            id="photoUpload"
+            accept="image/*">
+
+    </div>
+
+</section>
+
+<!-- ABOUT PAGE -->
+<section class="page" id="about">
+
+    <h2 class="section-title">About Me</h2>
+
+    <div class="box">
+        <p>
+            I am a Computer Science Engineering student with an
+            interest in programming, technology and software
+            development.
+        </p>
+
+        <br>
+
+        <p>
+            I enjoy learning new concepts and improving my
+            technical skills through practical projects.
+            My goal is to become a skilled software professional
+            and contribute to useful technology solutions.
+        </p>
+
+        <button class="btn back-button" onclick="showPage('home')">
+            Back to Home
+        </button>
+    </div>
+
+</section>
+
+<!-- RESUME PAGE -->
+<section class="page" id="resume">
+
+    <h2 class="section-title">My Resume</h2>
+
+    <div class="box">
+
+        <div class="resume-header">
+            <h2>Disha Kulal</h2>
+            <p>Computer Science Engineering Student</p>
+            <p>Email: dishakulal2026@gmail.com</p>
+            <p>Phone: +91 9844456031</p>
+            <p>Location: Bantwala, Karnataka</p>
+            <p>
+                LinkedIn:
+                linkedin.com/in/disha-kulal-478624428
+            </p>
+            <p>
+                GitHub:
+                github.com/dishakulal2026-cells
+            </p>
+        </div>
+
+        <div class="resume-section">
+            <h3>Career Objective</h3>
+            <p>
+                To obtain an opportunity where I can apply my
+                technical knowledge, improve my programming skills
+                and contribute to the growth of an organization.
+            </p>
+        </div>
+
+        <div class="resume-section">
+            <h3>Educational Qualification</h3>
+
+            <p><strong>B.E. - Computer Science and Engineering</strong></p>
+            <p>Vivekananda College of Engineering and Technology, Puttur</p>
+            <p>Currently in 3rd Year | CGPA: 8.5</p>
+
+            <br>
+
+            <p><strong>Pre-University Course (PUC)</strong></p>
+            <p>Shri Rama PU College, Kalladka | 2024 | 87%</p>
+
+            <br>
+
+            <p><strong>SSLC</strong></p>
+            <p>Government High School, Kadeshivalaya | 2022 | 92%</p>
+        </div>
+
+        <div class="resume-section">
+            <h3>Technical Skills</h3>
+            <ul>
+                <li>Programming Languages: C, C++, Java</li>
+                <li>Web Technologies: HTML, CSS, JavaScript</li>
+                <li>Database: MySQL</li>
+                <li>Tools: VS Code, GitHub</li>
+            </ul>
+        </div>
+
+        <div class="resume-section">
+            <h3>Academic Projects</h3>
+
+            <p><strong>E-Waste Classification and Recycling Recommendation System</strong></p>
+            <p>
+                A web-based project to classify laptop e-waste
+                and provide suitable recycling recommendations.
+            </p>
+
+            <br>
+
+            <p><strong>Student Attendance Management System</strong></p>
+            <p>
+                A web-based application for managing student
+                attendance, tracking and generating reports.
+            </p>
+        </div>
+
+        <div class="resume-section">
+            <h3>Certifications</h3>
+            <ul>
+                <li>Data Structures and Algorithms - Infosys Springboard</li>
+                <li>Creating Responsive Web Page using Bootstrap - Infosys Springboard</li>
+                <li>Linux for Beginners - Infosys Springboard</li>
+            </ul>
+        </div>
+
+        <div class="resume-section">
+            <h3>Strengths</h3>
+            <ul>
+                <li>Quick learner</li>
+                <li>Problem-solving skills</li>
+                <li>Teamwork and communication</li>
+                <li>Willingness to learn new technologies</li>
+            </ul>
+        </div>
+
+        <button class="btn" onclick="window.print()">
+            Download / Print Resume
+        </button>
+
+        <button class="btn back-button" onclick="showPage('home')">
+            Back to Home
+        </button>
+
+    </div>
+
+</section>
+
+<!-- BIO DATA PAGE -->
+<section class="page" id="biodata">
+
+    <h2 class="section-title">My Bio Data</h2>
+
+    <div class="box bio-box">
+
+        <h3>Personal Information</h3>
+
+        <table class="bio-table">
+
+            <tr>
+                <td>Full Name</td>
+                <td>Disha Kulal</td>
+            </tr>
+
+            <tr>
+                <td>Date of Birth</td>
+                <td>28 / 03 / 2006</td>
+            </tr>
+
+            <tr>
+                <td>Gender</td>
+                <td>Female</td>
+            </tr>
+
+            <tr>
+                <td>Nationality</td>
+                <td>Indian</td>
+            </tr>
+
+            <tr>
+                <td>Languages Known</td>
+                <td>English, Kannada, Tulu</td>
+            </tr>
+
+            <tr>
+                <td>Address</td>
+                <td>Bengadadi House, Kadeshivalaya, Bantwala</td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td>dishakulal2024@gmail.com</td>
+            </tr>
+
+            <tr>
+                <td>Phone Number</td>
+                <td>+91 9844456031</td>
+            </tr>
+
+            <tr>
+                <td>Hobbies</td>
+                <td>Reading, Learning, Programming</td>
+            </tr>
+
+        </table>
+
+        <button class="btn back-button" onclick="showPage('home')">
+            Back to Home
+        </button>
+
+    </div>
+
+</section>
+
+<!-- PROJECTS PAGE -->
+<section class="page" id="projects">
+
+    <h2 class="section-title">My Projects</h2>
+
+    <div class="projects">
+
+        <div class="project-card">
+            <h3>E-Waste Classification System</h3>
+
+            <p>
+                A web-based application that classifies laptop
+                e-waste and provides recycling recommendations.
+            </p>
+
+            <br>
+
+            <strong>Technologies:</strong>
+            <p>HTML, CSS, JavaScript, Python, Machine Learning</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Student Attendance Management System</h3>
+
+            <p>
+                A web-based application for managing student
+                attendance, tracking and generating summaries.
+            </p>
+
+            <br>
+
+            <strong>Technologies:</strong>
+            <p>HTML, CSS, JavaScript, Firebase</p>
+        </div>
+
+    </div>
+
+    <button class="btn back-button" onclick="showPage('home')">
+        Back to Home
+    </button>
+
+</section>
+
+<!-- CONTACT PAGE -->
+<section class="page" id="contact">
+
+    <h2 class="section-title">Contact Me</h2>
+
+    <div class="contact-box">
+
+        <p>I'd be happy to connect with you!</p>
+
+        <br>
+
+        <p>
+            Email:
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dishakulal2026@gmail.com"
+               target="_blank">
+                dishakulal2026@gmail.com
+            </a>
+        </p>
+
+        <p>
+            LinkedIn:
+            <a href="https://www.linkedin.com/in/disha-kulal-478624428/"
+               target="_blank">
+                Visit My LinkedIn
+            </a>
+        </p>
+
+        <p>
+            GitHub:
+            <a href="https://github.com/dishakulal2026-cells"
+               target="_blank">
+                Visit My GitHub
+            </a>
+        </p>
+
+        <button class="btn back-button" onclick="showPage('home')">
+            Back to Home
+        </button>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Disha Kulal | Personal Portfolio</p>
+</footer>
+
+<script>
+
+// Show only the selected page
+function showPage(pageId) {
+
+    document.querySelectorAll(".page").forEach(function(page) {
+        page.classList.remove("active");
+    });
+
+    document.getElementById(pageId).classList.add("active");
+
+    window.scrollTo(0, 0);
+}
+
+// Change profile photo
+document.getElementById("photoUpload").addEventListener("change", function(event) {
+
+    const file = event.target.files[0];
+
+    if (file && file.type.startsWith("image/")) {
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            document.getElementById("profileImage").src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+});
+
+</script>
+
+</body>
+</html>
